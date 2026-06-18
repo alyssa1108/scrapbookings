@@ -15,36 +15,37 @@ const scrapbookUnlock = document.getElementById("scrapbook-unlock");
 const scrapbook = document.getElementById("scrapbook");
 
 /* =========================
-   BOOK OPEN (COVER ONLY)
+   COVER OPENS FIRST ONLY
 ========================= */
 book.addEventListener("click", () => {
-    book.classList.add("open");
+    if(!book.classList.contains("open")){
+        book.classList.add("open");
+    }
 });
 
 /* =========================
-   PASSWORD UNLOCK
+   PASSWORD UNLOCK FLOW
 ========================= */
 unlockBtn.addEventListener("click", () => {
+
     if(passwordInput.value === "JoashManicum"){
 
         errorMsg.innerText = "";
 
-        // open book animation
+        // ensure book stays open
         book.classList.add("open");
 
+        // wait for cover animation before showing scrapbook
         setTimeout(() => {
 
-            // hide password screen
             scrapbookUnlock.style.display = "none";
-
-            // show scrapbook
             scrapbook.style.display = "flex";
 
-            // IMPORTANT: reset properly
+            // IMPORTANT RESET
             currentPage = 0;
             renderPage();
 
-        }, 800);
+        }, 900);
 
     } else {
         errorMsg.innerText = "Wrong Password ❤️";
@@ -52,7 +53,7 @@ unlockBtn.addEventListener("click", () => {
 });
 
 /* =========================
-   EDIT YOUR DATES HERE
+   EDITABLE DATES
 ========================= */
 const dates = [
 "01 Jan 2025",
@@ -73,7 +74,7 @@ const dates = [
 ];
 
 /* =========================
-   15 UNIQUE PAGES (NO REPEAT IMAGES)
+   15 UNIQUE PAGES (NO REPEATS)
 ========================= */
 const pages = [];
 
@@ -117,6 +118,9 @@ prevBtn.addEventListener("click", () => {
         renderPage();
     }
 });
+
+/* INIT ONLY AFTER UNLOCK (safety) */
+renderPage();
 
 /* =========================
    SPARKLES
