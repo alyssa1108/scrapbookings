@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Scrapbook</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div id="sparkles"></div>
 
-<!-- CLOSED BOOK -->
-<div id="bookContainer">
+<div id="book-container">
 
     <div id="book">
 
-        <!-- FRONT COVER -->
-        <div id="coverFront">
-            <div class="gold-title">
-                Our Story
+        <div id="cover-front">
+
+            <div class="gold-frame"></div>
+
+            <div class="corner tl">❦</div>
+            <div class="corner tr">❦</div>
+            <div class="corner bl">❦</div>
+            <div class="corner br">❦</div>
+
+            <div class="cover-content">
+
+                <h1>Our Story</h1>
+
+                <div class="heart">♥</div>
+
+                <p>A Scrapbook Of Us</p>
+
             </div>
+
         </div>
 
-        <!-- INSIDE PAGE -->
-        <div id="insidePage">
+        <div id="inside-page">
 
-            <div id="passwordPage">
+            <div class="password-card">
 
-                <h1>Welcome My Baby ❤️</h1>
+                <h1>Welcome<br>My Baby</h1>
 
                 <p>
-                    Enter the password to open our scrapbook
+                    Enter the password to open
+                    our scrapbook
                 </p>
 
                 <input
@@ -44,7 +58,7 @@
                     Unlock
                 </button>
 
-                <p id="errorMsg"></p>
+                <div id="errorMsg"></div>
 
             </div>
 
@@ -54,7 +68,6 @@
 
 </div>
 
-<script src="pages/memories.js"></script>
 <script src="script.js"></script>
 
 </body>
