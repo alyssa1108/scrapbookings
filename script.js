@@ -1,149 +1,67 @@
-const book = document.getElementById("book");
-const unlockBtn = document.getElementById("unlockBtn");
-const passwordInput = document.getElementById("passwordInput");
-const errorMsg = document.getElementById("errorMsg");
+const book =
+document.getElementById("book");
 
-/* OPEN BOOK */
+const unlockBtn =
+document.getElementById("unlockBtn");
+
+const passwordInput =
+document.getElementById("passwordInput");
+
+const errorMsg =
+document.getElementById("errorMsg");
 
 book.addEventListener("click", () => {
 
-    if(!book.classList.contains("open")){
-        book.classList.add("open");
-    }
+if(!book.classList.contains("open")){
+
+book.classList.add("open");
+
+}
 
 });
-
-/* PASSWORD */
 
 unlockBtn.addEventListener("click", () => {
 
-    if(passwordInput.value === "JoashManicum"){
+if(passwordInput.value === "JoashManicum"){
 
-        launchScrapbook();
+alert(
+"Password Correct! Next we build the scrapbook pages."
+);
 
-    }else{
+}else{
 
-        errorMsg.innerText = "Wrong Password ❤️";
+errorMsg.innerText =
+"Wrong Password ❤️";
 
-    }
+}
 
 });
 
-/* SCRAPBOOK */
+document.addEventListener("click", e => {
 
-function launchScrapbook(){
+for(let i=0;i<10;i++){
 
-    document.body.innerHTML = `
+const sparkle =
+document.createElement("div");
 
-    <div id="scrapbook">
+sparkle.classList.add("sparkle");
 
-        <div id="page">
+sparkle.style.left =
+e.pageX + "px";
 
-            <div class="polaroid">
+sparkle.style.top =
+e.pageY + "px";
 
-                <img id="memoryImage">
+document.body.appendChild(sparkle);
 
-                <h2 id="memoryTitle"></h2>
+setTimeout(() => {
 
-                <p id="memoryText"></p>
+sparkle.remove();
 
-            </div>
-
-        </div>
-
-        <button id="prevBtn">◀</button>
-        <button id="nextBtn">▶</button>
-
-    </div>
-
-    `;
-
-    currentPage = 0;
-
-    loadMemory(currentPage);
-
-    document
-        .getElementById("nextBtn")
-        .addEventListener("click", nextPage);
-
-    document
-        .getElementById("prevBtn")
-        .addEventListener("click", prevPage);
+},1000);
 
 }
-
-let currentPage = 0;
-
-function loadMemory(index){
-
-    document.getElementById("memoryImage").src =
-        memories[index].image;
-
-    document.getElementById("memoryTitle").innerText =
-        memories[index].title;
-
-    document.getElementById("memoryText").innerText =
-        memories[index].text;
-
-}
-
-function nextPage(){
-
-    if(currentPage < memories.length - 1){
-
-        currentPage++;
-
-        loadMemory(currentPage);
-
-    }else{
-
-        alert(
-            "End of Scrapbook ❤️"
-        );
-
-    }
-
-}
-
-function prevPage(){
-
-    if(currentPage > 0){
-
-        currentPage--;
-
-        loadMemory(currentPage);
-
-    }
-
-}
-
-/* GOLD SPARKLES */
-
-document.addEventListener("click",(e)=>{
-
-    for(let i=0;i<10;i++){
-
-        const sparkle =
-            document.createElement("div");
-
-        sparkle.classList.add("sparkle");
-
-        sparkle.style.left =
-            e.pageX + "px";
-
-        sparkle.style.top =
-            e.pageY + "px";
-
-        document.body.appendChild(
-            sparkle
-        );
-
-        setTimeout(()=>{
-
-            sparkle.remove();
-
-        },1000);
-
-    }
 
 });
+
+                 
