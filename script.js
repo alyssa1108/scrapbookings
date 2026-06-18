@@ -13,15 +13,22 @@ const prevBtn = document.getElementById("prev");
 
 /* OPEN BOOK */
 book.addEventListener("click", () => {
-    if(!book.classList.contains("open")){
-        book.classList.add("open");
-    }
+    book.classList.add("open");
 });
 
-/* PASSWORD */
+/* PASSWORD + UNLOCK */
 unlockBtn.addEventListener("click", () => {
     if(passwordInput.value === "JoashManicum"){
-        alert("Unlocked ❤️ Enjoy your scrapbook");
+
+        errorMsg.innerText = "";
+
+        book.classList.add("open");
+
+        setTimeout(() => {
+            document.getElementById("scrapbook-unlock").style.display = "none";
+            document.getElementById("scrapbook").style.display = "flex";
+        }, 900);
+
     } else {
         errorMsg.innerText = "Wrong Password ❤️";
     }
@@ -34,7 +41,7 @@ const dates = [
 "20 Feb 2025","25 Feb 2025","01 Mar 2025","05 Mar 2025","10 Mar 2025"
 ];
 
-/* BUILD 30 PAGES FROM 15 IMAGES */
+/* PAGES */
 const pages = [];
 
 for(let i=1;i<=30;i++){
@@ -47,25 +54,19 @@ for(let i=1;i<=30;i++){
 }
 
 let currentPage = 0;
-
-/* SAVE NOTES PER PAGE */
 let notes = new Array(30).fill("");
 
 function renderPage(){
-
     photo.src = pages[currentPage].img;
     dateText.innerText = pages[currentPage].date;
     pageNum.innerText = `${currentPage+1} / 30`;
-
     noteBox.value = notes[currentPage];
 }
 
-/* SAVE TEXT WHILE TYPING */
 noteBox.addEventListener("input", () => {
     notes[currentPage] = noteBox.value;
 });
 
-/* NEXT PAGE */
 nextBtn.addEventListener("click", () => {
     if(currentPage < 29){
         currentPage++;
@@ -73,7 +74,6 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
-/* PREV PAGE */
 prevBtn.addEventListener("click", () => {
     if(currentPage > 0){
         currentPage--;
@@ -81,10 +81,9 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
-/* INIT */
 renderPage();
 
-/* SPARKLES */
+/* sparkles */
 document.addEventListener("click", e => {
     for(let i=0;i<10;i++){
         const sparkle = document.createElement("div");
