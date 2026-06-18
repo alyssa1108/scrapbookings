@@ -1,0 +1,171 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+
+    background:#0e1611;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Georgia, serif;
+}
+
+/* BOOK */
+
+#bookContainer{
+    perspective:3000px;
+}
+
+#book{
+    position:relative;
+
+    width:350px;
+    height:500px;
+
+    transform-style:preserve-3d;
+}
+
+/* COVER */
+
+#coverFront{
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:#163321;
+
+    border-radius:8px;
+
+    box-shadow:
+    0 0 40px rgba(0,0,0,0.5);
+
+    transform-origin:left center;
+
+    transition:1.4s ease;
+
+    z-index:10;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.gold-title{
+    color:gold;
+
+    font-size:2rem;
+
+    text-shadow:
+    0 0 10px gold;
+
+    letter-spacing:3px;
+}
+
+/* OPEN STATE */
+
+.open #coverFront{
+    transform:rotateY(-170deg);
+}
+
+/* INSIDE PAGE */
+
+#insidePage{
+    width:100%;
+    height:100%;
+
+    background:#f7efe2;
+
+    border-radius:8px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+}
+
+/* PASSWORD PAGE */
+
+#passwordPage{
+    text-align:center;
+}
+
+#passwordPage h1{
+    margin-bottom:20px;
+    color:#163321;
+}
+
+#passwordPage p{
+    margin-bottom:20px;
+}
+
+input{
+    width:250px;
+
+    padding:12px;
+
+    border-radius:6px;
+
+    border:1px solid #ccc;
+}
+
+button{
+    margin-top:15px;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    background:#163321;
+    color:white;
+}
+
+#errorMsg{
+    color:red;
+    margin-top:15px;
+}
+
+/* SPARKLES */
+
+.sparkle{
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:gold;
+
+    pointer-events:none;
+
+    animation:sparkle 1s forwards;
+}
+
+@keyframes sparkle{
+
+    from{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    to{
+        opacity:0;
+        transform:
+        translateY(-50px)
+        scale(0);
+    }
+}
