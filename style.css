@@ -1,3 +1,4 @@
+
 *{
 margin:0;
 padding:0;
@@ -5,17 +6,12 @@ box-sizing:border-box;
 }
 
 body{
-
 background:#07100b;
-
 height:100vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
 overflow:hidden;
-
 font-family:Georgia, serif;
 }
 
@@ -24,43 +20,27 @@ perspective:3000px;
 }
 
 #book{
-
 width:380px;
 height:540px;
-
 position:relative;
-
 transform-style:preserve-3d;
 }
 
+/* ======================
+   FRONT COVER
+====================== */
+
 #cover-front{
-
 position:absolute;
-
 width:100%;
 height:100%;
-
-background:
-linear-gradient(
-135deg,
-#21452f,
-#163321,
-#0d2217
-);
-
+background:linear-gradient(135deg,#21452f,#163321,#0d2217);
 border-radius:10px;
-
 transform-origin:left center;
-
 transition:1.6s;
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.6);
-
+box-shadow:0 20px 60px rgba(0,0,0,.6);
 border:2px solid #9f8250;
-
 overflow:hidden;
-
 display:flex;
 justify-content:center;
 align-items:center;
@@ -70,193 +50,161 @@ align-items:center;
 transform:rotateY(-175deg);
 }
 
-.gold-frame{
-
+/* fabric texture overlay */
+#cover-front::after{
+content:"";
 position:absolute;
+inset:0;
+background:repeating-linear-gradient(
+45deg,
+rgba(255,255,255,0.03),
+rgba(255,255,255,0.03) 2px,
+transparent 2px,
+transparent 6px
+);
+pointer-events:none;
+border-radius:10px;
+}
 
+/* gold frame */
+.gold-frame{
+position:absolute;
 top:18px;
 left:18px;
 right:18px;
 bottom:18px;
-
 border:1px solid #c7a96c;
 }
 
+/* corners */
 .corner{
-
 position:absolute;
-
 color:#c7a96c;
-
 font-size:30px;
 }
 
-.tl{
-top:18px;
-left:25px;
-}
+.tl{top:18px;left:25px;}
+.tr{top:18px;right:25px;}
+.bl{bottom:18px;left:25px;}
+.br{bottom:18px;right:25px;}
 
-.tr{
-top:18px;
-right:25px;
-}
-
-.bl{
-bottom:18px;
-left:25px;
-}
-
-.br{
-bottom:18px;
-right:25px;
-}
+/* ======================
+   EMBROIDERED TITLE
+====================== */
 
 .cover-content{
 text-align:center;
 }
 
 .cover-content h1{
-
 font-size:64px;
+font-family:'Great Vibes', cursive;
 
-font-family:cursive;
+color:#d6b46a;
 
-color:#c7a96c;
+/* embroidered stitched effect */
+text-shadow:
+1px 1px 0px #8a6a2f,
+2px 2px 0px #6b5122,
+3px 3px 6px rgba(0,0,0,0.4),
+0 0 10px rgba(214,180,106,0.5);
 
+letter-spacing:2px;
 font-weight:normal;
+
+/* gold thread gradient */
+background:linear-gradient(145deg,#f3de9b,#b8892f,#f3de9b);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .heart{
-
 color:#c7a96c;
-
 font-size:20px;
-
 margin:15px 0;
 }
 
 .cover-content p{
-
 color:#c7a96c;
-
 letter-spacing:4px;
-
 text-transform:uppercase;
-
 font-size:14px;
 }
 
-#inside-page{
+/* ======================
+   INSIDE PAGE
+====================== */
 
+#inside-page{
 width:100%;
 height:100%;
-
 background:#efe4d0;
-
 border-radius:10px;
-
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
 .password-card{
-
 text-align:center;
-
 padding:30px;
 }
 
 .password-card h1{
-
 font-size:52px;
-
 font-family:cursive;
-
 font-weight:normal;
-
 color:#6a5130;
-
 margin-bottom:20px;
 }
 
 .password-card p{
-
 color:#6a5130;
-
 margin-bottom:25px;
 }
 
 input{
-
 width:260px;
-
 padding:14px;
-
 border-radius:8px;
-
 border:1px solid #d0b78c;
-
 background:#fffdf8;
-
 margin-bottom:15px;
 }
 
 button{
-
 padding:14px 40px;
-
 background:#163321;
-
 color:white;
-
 border:none;
-
 border-radius:30px;
-
 cursor:pointer;
-
 font-size:16px;
 }
 
 #errorMsg{
-
 margin-top:15px;
-
 color:#b33;
 }
 
+/* ======================
+   SPARKLES
+====================== */
+
 .sparkle{
-
 position:absolute;
-
 width:8px;
 height:8px;
-
 background:#d8b46b;
-
 border-radius:50%;
-
 pointer-events:none;
-
 animation:sparkle 1s forwards;
 }
 
 @keyframes sparkle{
-
-0%{
-opacity:1;
-transform:scale(1);
-}
-
+0%{opacity:1;transform:scale(1);}
 100%{
 opacity:0;
-transform:
-translateY(-40px)
-scale(0);
+transform:translateY(-40px) scale(0);
 }
 }
-
-   
-
-    
