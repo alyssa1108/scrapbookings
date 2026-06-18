@@ -11,21 +11,39 @@ const noteBox = document.getElementById("noteBox");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 
-/* OPEN BOOK */
+const scrapbookUnlock = document.getElementById("scrapbook-unlock");
+const scrapbook = document.getElementById("scrapbook");
+
+/* =========================
+   BOOK OPEN (COVER ONLY)
+========================= */
 book.addEventListener("click", () => {
     book.classList.add("open");
 });
 
-/* PASSWORD + UNLOCK */
+/* =========================
+   PASSWORD UNLOCK
+========================= */
 unlockBtn.addEventListener("click", () => {
     if(passwordInput.value === "JoashManicum"){
 
         errorMsg.innerText = "";
+
+        // open book animation
         book.classList.add("open");
 
         setTimeout(() => {
-            document.getElementById("scrapbook-unlock").style.display = "none";
-            document.getElementById("scrapbook").style.display = "flex";
+
+            // hide password screen
+            scrapbookUnlock.style.display = "none";
+
+            // show scrapbook
+            scrapbook.style.display = "flex";
+
+            // IMPORTANT: reset properly
+            currentPage = 0;
+            renderPage();
+
         }, 800);
 
     } else {
@@ -35,9 +53,7 @@ unlockBtn.addEventListener("click", () => {
 
 /* =========================
    EDIT YOUR DATES HERE
-   (THIS IS WHAT YOU CAN CHANGE ANYTIME)
 ========================= */
-
 const dates = [
 "01 Jan 2025",
 "05 Jan 2025",
@@ -57,36 +73,36 @@ const dates = [
 ];
 
 /* =========================
-   15 UNIQUE PAGES ONLY
-   (NO REPEATS)
+   15 UNIQUE PAGES (NO REPEAT IMAGES)
 ========================= */
-
 const pages = [];
 
-for(let i=1;i<=15;i++){
+for(let i = 1; i <= 15; i++){
     pages.push({
-        img:`pic0${i}.jpg.jpeg`,
-        date:dates[i-1] || ""
+        img: `pic0${i}.jpg.jpeg`,
+        date: dates[i - 1] || ""
     });
 }
 
 let currentPage = 0;
 let notes = new Array(15).fill("");
 
-/* RENDER PAGE */
+/* =========================
+   RENDER PAGE
+========================= */
 function renderPage(){
     photo.src = pages[currentPage].img;
     dateText.innerText = pages[currentPage].date;
-    pageNum.innerText = `${currentPage+1} / 15`;
+    pageNum.innerText = `${currentPage + 1} / 15`;
     noteBox.value = notes[currentPage];
 }
 
-/* SAVE TEXT PER PAGE */
+/* SAVE NOTES PER PAGE */
 noteBox.addEventListener("input", () => {
     notes[currentPage] = noteBox.value;
 });
 
-/* NEXT */
+/* NEXT PAGE */
 nextBtn.addEventListener("click", () => {
     if(currentPage < 14){
         currentPage++;
@@ -94,7 +110,7 @@ nextBtn.addEventListener("click", () => {
     }
 });
 
-/* PREV */
+/* PREV PAGE */
 prevBtn.addEventListener("click", () => {
     if(currentPage > 0){
         currentPage--;
@@ -102,12 +118,11 @@ prevBtn.addEventListener("click", () => {
     }
 });
 
-/* INIT */
-renderPage();
-
-/* SPARKLES */
+/* =========================
+   SPARKLES
+========================= */
 document.addEventListener("click", e => {
-    for(let i=0;i<10;i++){
+    for(let i = 0; i < 10; i++){
         const sparkle = document.createElement("div");
         sparkle.classList.add("sparkle");
 
