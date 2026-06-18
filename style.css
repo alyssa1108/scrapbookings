@@ -1,171 +1,262 @@
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
 
-    background:#0e1611;
+background:#07100b;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+height:100vh;
 
-    font-family:Georgia, serif;
+display:flex;
+justify-content:center;
+align-items:center;
+
+overflow:hidden;
+
+font-family:Georgia, serif;
 }
 
-/* BOOK */
-
-#bookContainer{
-    perspective:3000px;
+#book-container{
+perspective:3000px;
 }
 
 #book{
-    position:relative;
 
-    width:350px;
-    height:500px;
+width:380px;
+height:540px;
 
-    transform-style:preserve-3d;
+position:relative;
+
+transform-style:preserve-3d;
 }
 
-/* COVER */
+#cover-front{
 
-#coverFront{
-    position:absolute;
+position:absolute;
 
-    width:100%;
-    height:100%;
+width:100%;
+height:100%;
 
-    background:#163321;
+background:
+linear-gradient(
+135deg,
+#21452f,
+#163321,
+#0d2217
+);
 
-    border-radius:8px;
+border-radius:10px;
 
-    box-shadow:
-    0 0 40px rgba(0,0,0,0.5);
+transform-origin:left center;
 
-    transform-origin:left center;
+transition:1.6s;
 
-    transition:1.4s ease;
+box-shadow:
+0 20px 60px rgba(0,0,0,.6);
 
-    z-index:10;
+border:2px solid #9f8250;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+overflow:hidden;
+
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.gold-title{
-    color:gold;
-
-    font-size:2rem;
-
-    text-shadow:
-    0 0 10px gold;
-
-    letter-spacing:3px;
+.open #cover-front{
+transform:rotateY(-175deg);
 }
 
-/* OPEN STATE */
+.gold-frame{
 
-.open #coverFront{
-    transform:rotateY(-170deg);
+position:absolute;
+
+top:18px;
+left:18px;
+right:18px;
+bottom:18px;
+
+border:1px solid #c7a96c;
 }
 
-/* INSIDE PAGE */
+.corner{
 
-#insidePage{
-    width:100%;
-    height:100%;
+position:absolute;
 
-    background:#f7efe2;
+color:#c7a96c;
 
-    border-radius:8px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:30px;
+font-size:30px;
 }
 
-/* PASSWORD PAGE */
-
-#passwordPage{
-    text-align:center;
+.tl{
+top:18px;
+left:25px;
 }
 
-#passwordPage h1{
-    margin-bottom:20px;
-    color:#163321;
+.tr{
+top:18px;
+right:25px;
 }
 
-#passwordPage p{
-    margin-bottom:20px;
+.bl{
+bottom:18px;
+left:25px;
+}
+
+.br{
+bottom:18px;
+right:25px;
+}
+
+.cover-content{
+text-align:center;
+}
+
+.cover-content h1{
+
+font-size:64px;
+
+font-family:cursive;
+
+color:#c7a96c;
+
+font-weight:normal;
+}
+
+.heart{
+
+color:#c7a96c;
+
+font-size:20px;
+
+margin:15px 0;
+}
+
+.cover-content p{
+
+color:#c7a96c;
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+
+font-size:14px;
+}
+
+#inside-page{
+
+width:100%;
+height:100%;
+
+background:#efe4d0;
+
+border-radius:10px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.password-card{
+
+text-align:center;
+
+padding:30px;
+}
+
+.password-card h1{
+
+font-size:52px;
+
+font-family:cursive;
+
+font-weight:normal;
+
+color:#6a5130;
+
+margin-bottom:20px;
+}
+
+.password-card p{
+
+color:#6a5130;
+
+margin-bottom:25px;
 }
 
 input{
-    width:250px;
 
-    padding:12px;
+width:260px;
 
-    border-radius:6px;
+padding:14px;
 
-    border:1px solid #ccc;
+border-radius:8px;
+
+border:1px solid #d0b78c;
+
+background:#fffdf8;
+
+margin-bottom:15px;
 }
 
 button{
-    margin-top:15px;
 
-    padding:12px 24px;
+padding:14px 40px;
 
-    border:none;
+background:#163321;
 
-    border-radius:6px;
+color:white;
 
-    cursor:pointer;
+border:none;
 
-    background:#163321;
-    color:white;
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:16px;
 }
 
 #errorMsg{
-    color:red;
-    margin-top:15px;
+
+margin-top:15px;
+
+color:#b33;
 }
 
-/* SPARKLES */
-
 .sparkle{
-    position:absolute;
 
-    width:10px;
-    height:10px;
+position:absolute;
 
-    border-radius:50%;
+width:8px;
+height:8px;
 
-    background:gold;
+background:#d8b46b;
 
-    pointer-events:none;
+border-radius:50%;
 
-    animation:sparkle 1s forwards;
+pointer-events:none;
+
+animation:sparkle 1s forwards;
 }
 
 @keyframes sparkle{
 
-    from{
-        opacity:1;
-        transform:scale(1);
-    }
-
-    to{
-        opacity:0;
-        transform:
-        translateY(-50px)
-        scale(0);
-    }
+0%{
+opacity:1;
+transform:scale(1);
 }
+
+100%{
+opacity:0;
+transform:
+translateY(-40px)
+scale(0);
+}
+}
+
+   
+
+    
