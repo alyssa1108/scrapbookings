@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story</title>
 
-<!-- Cursive embroidered font -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
@@ -19,6 +18,9 @@
 
     <div id="book">
 
+        <!-- =========================
+             FRONT COVER
+        ========================== -->
         <div id="cover-front">
 
             <div class="gold-frame"></div>
@@ -29,30 +31,62 @@
             <div class="corner br">❦</div>
 
             <div class="cover-content">
-
                 <h1>Our Story</h1>
-
                 <div class="heart">♥</div>
-
                 <p>A Scrapbook Of Us</p>
-
             </div>
 
         </div>
 
+        <!-- =========================
+             INSIDE BOOK
+        ========================== -->
         <div id="inside-page">
 
-            <div class="password-card">
+            <!-- PASSWORD PAGE (FIRST VIEW) -->
+            <div id="scrapbook-unlock">
 
-                <h1>Welcome<br>My Baby</h1>
+                <div class="password-card">
 
-                <p>Enter the password to open our scrapbook</p>
+                    <h1>Welcome<br>My Baby</h1>
 
-                <input type="password" id="passwordInput" placeholder="Password">
+                    <p>Enter the password to open our scrapbook</p>
 
-                <button id="unlockBtn">Unlock</button>
+                    <input type="password" id="passwordInput" placeholder="Password">
 
-                <div id="errorMsg"></div>
+                    <button id="unlockBtn">Unlock</button>
+
+                    <div id="errorMsg"></div>
+
+                </div>
+
+            </div>
+
+            <!-- SCRAPBOOK (HIDDEN UNTIL UNLOCK) -->
+            <div id="scrapbook" style="display:none;">
+
+                <div id="page">
+
+                    <div class="page-border"></div>
+
+                    <div class="page-content">
+
+                        <div class="polaroid">
+                            <img id="photo" src="pic01.jpg.jpeg">
+                            <div class="date" id="dateText">01 Jan 2025</div>
+                        </div>
+
+                        <textarea id="noteBox" placeholder="Write your memory here..."></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="controls">
+                    <button id="prev">← Prev</button>
+                    <span id="pageNum">1 / 30</span>
+                    <button id="next">Next →</button>
+                </div>
 
             </div>
 
